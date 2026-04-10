@@ -5,36 +5,68 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description" content="இந்திய கம்யூனிஸ்ட் கட்சி (மார்க்சிஸ்ட்) — தமிழ்நாடு 17வது சட்டப்பேரவை தேர்தல் 2026 தேர்தல் அறிக்கை" />
   <title>தேர்தல் அறிக்கை 2026 | சிபிஐ(எம்) தமிழ்நாடு</title>
-  <link rel="stylesheet" href="styles.css?v=5" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Mukta+Malar:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css?v=13" />
   <link rel="manifest" href="manifest.webmanifest" />
 </head>
 <body>
-  <header class="site-header">
+  <div class="manifesto-app">
+  <header class="site-header manifesto-hero">
+    <span class="manifesto-hero__deco manifesto-hero__deco--1" aria-hidden="true"></span>
+    <span class="manifesto-hero__deco manifesto-hero__deco--2" aria-hidden="true"></span>
     <div class="header-inner">
-      <p class="eyebrow">தமிழ்நாடு · 17வது சட்டப்பேரவை தேர்தல் · ஏப்ரல் 23, 2026</p>
-      <h1 class="party-name" id="partyName">இந்திய கம்யூனிஸ்ட் கட்சி (மார்க்சிஸ்ட்)</h1>
-      <p class="doc-title" id="docTitle">தேர்தல் அறிக்கை</p>
-      <p class="tagline" id="tagline"></p>
-      <div class="header-actions">
-        <label class="search-wrap">
-          <span class="visually-hidden">தேடல்</span>
-          <input type="search" id="search" placeholder="தலைப்பு அல்லது உள்ளடக்கத்தில் தேடு…" autocomplete="off" />
-        </label>
-        <a class="btn-pdf" id="pdfLink" href="#" hidden>PDF பதிவிறக்கம்</a>
+      <div class="header-copy">
+        <p class="eyebrow">தமிழ்நாடு · 17வது சட்டப்பேரவை தேர்தல் · ஏப்ரல் 23, 2026</p>
+        <div class="party-name-row">
+          <div class="party-emblem-wrap">
+            <img
+              class="party-emblem"
+              src="asset/images/cpim-emblem.png"
+              alt=""
+              width="64"
+              height="64"
+              decoding="async"
+            />
+          </div>
+          <h1 class="party-name" id="partyName">இந்திய கம்யூனிஸ்ட் கட்சி (மார்க்சிஸ்ட்)</h1>
+        </div>
+        <p class="doc-title" id="docTitle">தேர்தல் அறிக்கை</p>
+        <p class="tagline hero-desc" id="tagline"></p>
+      </div>
+      <div class="header-download">
+        <a class="btn-pdf btn-pdf-hero" id="pdfLink" href="asset/CPIM_Election_Manifesto_2026.pdf" download="CPIM_Election_Manifesto_2026.pdf">
+          <span class="btn-pdf-text">தேர்தல் அறிக்கை PDF (2026)</span>
+          <span class="btn-pdf-icon" aria-hidden="true">⬇</span>
+        </a>
       </div>
     </div>
   </header>
 
   <main class="main">
+    <div class="search-panel">
+      <p class="search-label" id="searchLabel">தேடல்</p>
+      <label class="search-wrap search-wrap-main">
+        <span class="visually-hidden">தலைப்பு அல்லது உள்ளடக்கத்தில் தேடு</span>
+        <input type="search" id="search" placeholder="தலைப்பு அல்லது உள்ளடக்கத்தில் தேடு…" autocomplete="off" />
+      </label>
+    </div>
+    <p class="filters-eyebrow" id="filtersEyebrow">பிரிவு வாரியாக</p>
     <div class="filters" id="categoryFilters" role="tablist" aria-label="பிரிவுகளின்படி வடிகட்டல்"></div>
     <p class="stats" id="stats"></p>
     <section class="cards" id="cards" aria-live="polite"></section>
   </main>
 
+  <footer class="site-footer">
+    <p id="footerSlogan"></p>
+    <p class="meta-small" id="footerMeta"></p>
+  </footer>
+  </div>
+
   <div class="modal-backdrop" id="sectionModal" hidden>
     <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
       <button type="button" class="modal-close" id="modalClose" aria-label="மூடு">×</button>
-      <p class="modal-emoji" id="modalEmoji" aria-hidden="true"></p>
       <h2 class="modal-title" id="modalTitle"></h2>
       <p class="modal-count" id="modalCount"></p>
       <div class="modal-content" id="modalContent"></div>
@@ -45,13 +77,8 @@
     </div>
   </div>
 
-  <footer class="site-footer">
-    <p id="footerSlogan"></p>
-    <p class="meta-small" id="footerMeta"></p>
-  </footer>
-
   <div class="toast" id="toast" hidden aria-live="polite"></div>
 
-  <script src="app.js?v=5" type="module"></script>
+  <script src="app.js?v=13" type="module"></script>
 </body>
 </html>

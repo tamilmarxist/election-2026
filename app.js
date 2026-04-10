@@ -9,7 +9,6 @@ const categoryFiltersEl = document.getElementById("categoryFilters");
 
 const modalEl = document.getElementById("sectionModal");
 const modalCloseEl = document.getElementById("modalClose");
-const modalEmojiEl = document.getElementById("modalEmoji");
 const modalTitleEl = document.getElementById("modalTitle");
 const modalCountEl = document.getElementById("modalCount");
 const modalContentEl = document.getElementById("modalContent");
@@ -22,15 +21,6 @@ let manifesto = { meta: {}, sections: [] };
 let activeCategory = "all";
 let activeSection = null;
 let toastTimer = null;
-
-const SECTION_EMOJI = [
-  "📋", "🗳️", "🏛️", "📖", "🎭", "🏺", "⚖️", "📢", "🛡️", "💰", "🌾", "💧",
-  "👷", "🏥", "👩", "🚌", "📚", "🌿", "🏘️", "⚡", "🤝", "🌆", "✊", "📜"
-];
-
-function sectionEmoji(id) {
-  return SECTION_EMOJI[(id - 1) % SECTION_EMOJI.length];
-}
 
 function truncate(s, max) {
   if (!s) return "";
@@ -132,7 +122,6 @@ function openModal(sec) {
     return;
   }
   activeSection = sec;
-  modalEmojiEl.textContent = sectionEmoji(sec.id);
   modalTitleEl.textContent = sec.title;
   const n = sec.bullets?.length || 0;
   modalCountEl.textContent = sec.prose && n === 0 ? "முன்னுரை" : `${n} கோரிக்கைகள் / நிலைப்பாடுகள்`;
@@ -246,10 +235,6 @@ function render() {
     btn.type = "button";
     btn.className = "card-face";
 
-    const emoji = document.createElement("span");
-    emoji.className = "card-emoji";
-    emoji.textContent = sectionEmoji(sec.id);
-
     const headline = document.createElement("div");
     headline.className = "card-headline";
 
@@ -281,7 +266,6 @@ function render() {
     headline.appendChild(num);
     headline.appendChild(titleWrap);
 
-    btn.appendChild(emoji);
     btn.appendChild(headline);
     btn.appendChild(countEl);
     btn.appendChild(previewEl);
@@ -350,11 +334,9 @@ async function load() {
   footerSloganEl.textContent = manifesto.meta.tagline_ta || "";
   footerMetaEl.textContent = `${manifesto.meta.party_ta || ""} · ${manifesto.meta.date || ""}`;
 
-  const pdf = manifesto.meta.pdf_url;
-  if (pdf) {
-    pdfLink.href = pdf;
-    pdfLink.hidden = false;
-  }
+  const pdf = manifesto.meta.pdf_url || "asset/CPIM_Election_Manifesto_2026.pdf";
+  pdfLink.href = pdf;
+  pdfLink.download = pdf.split("/").pop() || "CPIM_Election_Manifesto_2026.pdf";
 
   wireModalActions();
   renderCategoryChips();

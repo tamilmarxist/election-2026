@@ -1,10 +1,11 @@
-const CACHE = "cpim-manifesto-v4";
+const CACHE = "cpim-manifesto-v9";
 const PRECACHE = [
   "index.html",
   "styles.css",
   "app.js",
   "data/manifesto.json",
   "manifest.webmanifest",
+  "asset/images/cpim-emblem.png",
   "fonts/korkai/korkai_light.otf",
   "fonts/korkai/korkai_regular.otf",
   "fonts/korkai/korkai_medium.otf",
